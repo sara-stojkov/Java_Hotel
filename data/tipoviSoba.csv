@@ -1,0 +1,7 @@
+jednokrevetna,1,1
+dvokrevetna,2,2
+dvokrevetna,1+1,2
+trokrevetna,2+1,3
+cetvrorokrevetna,2+2,4
+petokrevetna,2+2+1,5
+cetvorokrevetna,2+1+1,4
