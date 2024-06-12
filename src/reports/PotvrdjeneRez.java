@@ -13,8 +13,8 @@ public class PotvrdjeneRez {
 		int brojRez = 0;
 		for (Rezervacija rez : sveRezervacije) {
 			if (rez.getStatusRezervacije() == StatusRezervacije.POTVRĐENA && (pocetak.isEqual(rez.getDatumPocetka()) || kraj.isEqual(rez.getDatumPocetka()) || 
-					kraj.isEqual(rez.getDatumPocetka()) || kraj.isEqual(rez.getDatumKraja()) || (pocetak.isAfter(rez.getDatumPocetka()) && pocetak.isAfter(rez.getDatumKraja())) 
-							|| (kraj.isAfter(rez.getDatumPocetka()) && kraj.isAfter(rez.getDatumKraja())))) {
+					kraj.isEqual(rez.getDatumPocetka()) || kraj.isEqual(rez.getDatumKraja()) || (rez.getDatumPocetka().isAfter(pocetak) && rez.getDatumPocetka().isBefore(kraj)) 
+							|| (rez.getDatumKraja().isAfter(pocetak) && rez.getDatumKraja().isBefore(kraj)))) {
 				brojRez ++;
 			}
 		}

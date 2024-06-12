@@ -12,19 +12,25 @@ public class ObradjeneRez {
         int brojOtkazanihRez = 0;
         int brojOdbijenihRez = 0;
         int brojPotvrdjenihRez = 0;
+        int brojProslihRez = 0;
+        int brojTekucihRez = 0;
 
         for (Rezervacija rez : sveRezervacije) {
             LocalDate rezPocetak = rez.getDatumPocetka();
             LocalDate rezKraj = rez.getDatumKraja();
 
-            if ((rezPocetak.isEqual(pocetak) || rezPocetak.isAfter(pocetak)) &&
-                (rezKraj.isEqual(kraj) || rezKraj.isBefore(kraj))) {
+            if (rezPocetak.isEqual(pocetak) || (rezPocetak.isBefore(kraj)&& rezPocetak.isAfter(pocetak)) ||
+                rezKraj.isEqual(kraj) || (rezKraj.isBefore(kraj) && rezKraj.isAfter(pocetak))) {
                 if (rez.getStatusRezervacije().equals(StatusRezervacije.POTVRĐENA)) {
                     brojPotvrdjenihRez++;
                 } else if (rez.getStatusRezervacije().equals(StatusRezervacije.ODBIJENA)) {
                     brojOdbijenihRez++;
                 } else if (rez.getStatusRezervacije().equals(StatusRezervacije.OTKAZANA)) {
                     brojOtkazanihRez++;
+	            } else if (rez.getStatusRezervacije().equals(StatusRezervacije.PROŠLA)) {
+	            	brojProslihRez++;
+	            } else if (rez.getStatusRezervacije().equals(StatusRezervacije.U_TOKU)) {
+	            	brojTekucihRez++;
                 }
             }
         }
@@ -32,7 +38,9 @@ public class ObradjeneRez {
         Object[][] lista = {
             {"OTKAZANA", brojOtkazanihRez},
             {"ODBIJENA", brojOdbijenihRez},
-            {"POTVRĐENA", brojPotvrdjenihRez}
+            {"POTVRĐENA", brojPotvrdjenihRez},
+            {"PROŠLA", brojProslihRez},
+            {"U_TOKU", brojTekucihRez}
         };
         return lista;
     }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import entities.Rezervacija;
 import entities.Zaposleni;
+import enums.StatusRezervacije;
 import managers.KorisnikManager;
 import managers.RezervacijaManager;
 
@@ -14,7 +15,10 @@ public class PrihodiRashodi {
 	private static double dobaviPrihode(ArrayList <Rezervacija> sveRezervacije, LocalDate pocetak, LocalDate kraj) {
 		double prihodi = 0;
 		for (Rezervacija rez : sveRezervacije) {
-			if ((rez.getDatumKreiranja().isAfter(pocetak)||rez.getDatumKreiranja().isBefore(kraj)) || rez.getDatumKreiranja().isEqual(pocetak) || rez.getDatumKreiranja().isEqual(kraj)) {
+			if (rez.getStatusRezervacije() == StatusRezervacije.ODBIJENA) {
+				continue;
+			}
+			if ((rez.getDatumKreiranja().isAfter(pocetak) && rez.getDatumKreiranja().isBefore(kraj)) || rez.getDatumKreiranja().isEqual(pocetak) || rez.getDatumKreiranja().isEqual(kraj)) {
 				prihodi += rez.getCena();
 			}
 		}
