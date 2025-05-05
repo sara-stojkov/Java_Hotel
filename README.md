@@ -7,6 +7,12 @@ The system supports 4 roles: receptionist, room cleaner, administrator and guest
 
 Only for a few frames was _Window Builder_ used, all others were hardcoded.
 
+## Motivation
+
+This project was a great way to learn the basic pillars of OOP - inheritance, encapsulation, polymorhpism and abstraction. 
+
+Learing how to structure classes and the actual app has been really helpful so far. This app helped me see how an actual project timeline will look.
+
 ## External Java libraries
 JDatePicker 1.3.4
 https://sourceforge.net/projects/jdatepicker/files/latest/download
